@@ -1,43 +1,44 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/30 18:43:09 by jmoyano-          #+#    #+#              #
-#    Updated: 2022/08/31 19:28:57 by jmoyano-         ###   ########.fr        #
+#    Created: 2022/05/25 19:37:54 by jmoyano-          #+#    #+#              #
+#    Updated: 2022/06/01 17:48:38 by jmoyano-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minitalk
-CC = gcc
-CFLAGS = -Werror -Wextra -Wall
+# Este es el Makefile correspondiente a la práctica PRINTF
+# José Moyano Jiménez
 
-SRCS = client.c \
-		server.c
-		
-OBJS = $(SRCS:.c=.o)
+NAME	=	libftprintf.a
 
-$(NAME): $(OBJS)
-	make -C ./Moyano_library
-	make -C ./Printf
-	${CC} ${CFLAGS} $(OBJS) -I ./Moyano_library -L ./Moyano_library -l ft -o ${NAME} 
-	${CC} ${CFLAGS} $(OBJS) -I ./Printf -L ./Printf -l ft -o ${NAME} 
+SRCS	=	ft_printf.c \
+			ft_printf_utils.c
 
+OBJS		=	${SRCS:.c=.o}
+
+CFLAGS		= -Wall -Wextra -Werror
+
+$(NAME):
+	make -C ./Libft
+	cp Libft/libft.a $(NAME)
+	gcc $(CFLAGS) -c $(SRCS) -I./
+	ar rcs $(NAME) $(OBJS)
+
+	
 all: $(NAME)
 
 clean:
-	make clean -C ./Moyano_library
-	make clean -C ./Printf
-
+	make clean -C ./Libft
 	rm -f $(OBJS)
 
 fclean: clean
-	make fclean -C ./Moyano_library
-	make fclean -C ./Printf
+	make fclean -C ./Libft
 	rm -f $(NAME)
-	
+
 re: fclean all
 
-.PNONY: all clean fclean re
+.PHONY:     all clean fclean re

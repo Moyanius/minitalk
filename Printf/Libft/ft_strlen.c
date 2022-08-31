@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 18:59:21 by jmoyano-          #+#    #+#             */
-/*   Updated: 2022/08/31 19:41:10 by jmoyano-         ###   ########.fr       */
+/*   Created: 2022/04/20 13:15:35 by jmoyano-          #+#    #+#             */
+/*   Updated: 2022/04/25 17:34:43 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# define COLOR_GREEN  "\033[0;32m"
-# define COLOR_RED  "\033[0;31m"
-# define COLOR_BLUE  "\033[0;34m"
-# define COLOR_END  "\033[0m"
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <signal.h>
-#include "Printf/ft_printf.h"
-#include "Moyano_library/libft.h"
+#include "libft.h"
 
+size_t	ft_strlen(const char *str)
+{
+	int	i;
 
+	i = 0;
+	while (*(str + i) != '\0')
+		i++;
+	return (i);
+}
+/*
+int main(void)
+{
+	int i;
 
-
-
-
-void	confirm(int signal);
-int		ft_atoi(const char *str);
-
-
-#endif
+	i = ft_strlen( "This is string.h library function");
+	printf("%i", i);
+	return (0);
+}*/
