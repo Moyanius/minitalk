@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 16:12:30 by jmoyano-          #+#    #+#             */
-/*   Updated: 2022/06/08 18:23:38 by jmoyano-         ###   ########.fr       */
+/*   Created: 2022/04/20 13:15:35 by jmoyano-          #+#    #+#             */
+/*   Updated: 2022/09/06 19:31:25 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-# include <strings.h>
+size_t	ft_strlen(const char *str)
+{
+	int	i;
 
-void		ft_putchar_fd(char c, int fd);
-void		ft_putstr_fd(char *s, int fd, int *tc);
-size_t		ft_strlen(const char *str);
-char		*ft_strchr(const char *str, int c);
+	i = 0;
+	while (*(str + i) != '\0')
+		i++;
+	return (i);
+}
+/*
+int main(void)
+{
+	int i;
 
-#endif
+	i = ft_strlen( "This is string.h library function");
+	printf("%i", i);
+	return (0);
+}*/

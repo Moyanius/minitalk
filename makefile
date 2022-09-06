@@ -6,26 +6,38 @@
 #    By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 18:43:09 by jmoyano-          #+#    #+#              #
-#    Updated: 2022/08/31 19:28:57 by jmoyano-         ###   ########.fr        #
+#    Updated: 2022/09/06 19:44:38 by jmoyano-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minitalk
+
 CC = gcc
 CFLAGS = -Werror -Wextra -Wall
 
-SRCS = client.c \
-		server.c
-		
-OBJS = $(SRCS:.c=.o)
+SRC_SERVER = server.c 
+OBJ_SERVER = $(SRC_SERVER:.c=.o)
+SRC_CLIENT = client.c 
+OBJ_CLIENT = $(SRC_CLIENT:.c=.o)
 
-$(NAME): $(OBJS)
+
+SERVER = server
+CLIENT = client
+
+NAME = server client
+
+all: $(SERVER) $(CLIENT)
+
+$(SERVER): $(OBJ_SERVER)
 	make -C ./Moyano_library
 	make -C ./Printf
-	${CC} ${CFLAGS} $(OBJS) -I ./Moyano_library -L ./Moyano_library -l ft -o ${NAME} 
-	${CC} ${CFLAGS} $(OBJS) -I ./Printf -L ./Printf -l ft -o ${NAME} 
+	${CC} ${CFLAGS} $(OBJ_SERVER) -I ./Moyano_library -L ./Moyano_library -lft -o $(SERVER)
+	${CC} ${CFLAGS} $(OBJ_SERVER) -I ./Printf -L ./Moyano_library -lft -o $(SERVER) 
 
-all: $(NAME)
+$(CLIENT): $(OBJ_CLIENT)
+	make -C ./Moyano_library
+	make -C ./Printf
+	${CC} ${CFLAGS} $(OBJ_CLIENT) -I ./Moyano_library -L ./Moyano_library -lft -o $(CLIENT) 
+	${CC} ${CFLAGS} $(OBJ_CLIENT) -I ./Printf -L ./Moyano_library -lft -o $(CLIENT)
 
 clean:
 	make clean -C ./Moyano_library

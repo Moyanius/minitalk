@@ -6,7 +6,7 @@
 /*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:08:58 by jmoyano-          #+#    #+#             */
-/*   Updated: 2022/06/08 18:38:30 by jmoyano-         ###   ########.fr       */
+/*   Updated: 2022/09/06 19:32:14 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_select(char const *stri, va_list	lista, int *tc)
 		(*tc)++;
 	}
 	else if (*stri == 's')
-		ft_putstr_fd(va_arg(lista, char *), 1, tc);
+		ft_putstr_fdd(va_arg(lista, char *), 1, tc);
 	else if (*stri == 'd' || *stri == 'i')
 		ft_putnbr_d_i(va_arg(lista, int), tc);
 	else if (*stri == 'x')

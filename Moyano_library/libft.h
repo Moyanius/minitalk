@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dagomez <dagomez@student.42malaga.com>     +#+  +:+       +#+        */
+/*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 19:03:22 by dagomez           #+#    #+#             */
-/*   Updated: 2022/06/27 19:16:52 by dagomez          ###   ########.fr       */
+/*   Updated: 2022/09/06 20:29:03 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -72,11 +71,7 @@ void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-
-int		ft_printf(const char *str, ...);
-
-char	*get_next_line(int fd);
+int					ft_printf(const char *str, ...);
+char				*get_next_line(int fd);
 
 #endif

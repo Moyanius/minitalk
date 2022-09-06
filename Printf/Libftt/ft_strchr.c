@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 15:11:35 by jmoyano-          #+#    #+#             */
-/*   Updated: 2022/06/08 18:38:07 by jmoyano-         ###   ########.fr       */
+/*   Created: 2022/04/24 12:15:00 by jmoyano-          #+#    #+#             */
+/*   Updated: 2022/09/06 19:31:23 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd, int *tc)
+char	*ft_strchr(const char *str, int c)
 {
-	if (!s)
+	while (*str)
 	{
-		write (1, "(null)", 6);
-		*tc += 6;
-		return ;
+		if (*str == (char)c)
+		{
+			return ((char *)str);
+		}
+		str++;
 	}
-	write (fd, s, ft_strlen(s));
-	*tc += ft_strlen(s);
+	if (c == '\0')
+		return ((char *)str);
+	return (0);
 }
+/*
+#include <string.h>
+int main()
+{
+	char  *dst;
+	dst = "tripouille";
+	
+	printf("%s", dst + strlen(dst));
+	//puts(ft_strchr(dst, 0));
+	
+	return 0;
+}*/

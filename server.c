@@ -6,45 +6,52 @@
 /*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 18:40:49 by jmoyano-          #+#    #+#             */
-/*   Updated: 2022/08/31 19:33:44 by jmoyano-         ###   ########.fr       */
+/*   Updated: 2022/09/05 18:13:41 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	ft_bit_handler(int sig)
+static void	handler(int signal)
 {
-	static char		c = 0;
-	static int		pos = 0;
-	int				bit;
+	static char	c = 0;
+	static int	pos = 0;
+	int			bit;
 
-	if (sig == SIGUSR1)
+	if (signal == SIGUSR1)
 		bit = 0;
-	else if (sig == SIGUSR2)
+	else if (signal == SIGUSR2)
 		bit = 1;
 	else
 		exit(EXIT_FAILURE);
 	c += bit << pos++;
 	if (pos == 7)
 	{
-		ft_printf(COLOR_GREEN "%c", c);
 		if (!c)
-			ft_printf("\0");
-		pos = 0;
+			c = '\n';
+		ft_putchar_fd(c, 1);
 		c = 0;
+		pos = 0;
 	}
+}
+
+static void	set_handlers(void)
+{
+	struct sigaction	act;
+
+	act.sa_handler = handler;
+	sigemptyset(&act.sa_mask);
+	act.sa_flags = 0;
+	sigaction(SIGUSR1, &act, NULL);
+	sigaction(SIGUSR2, &act, NULL);
 }
 
 int	main(void)
 {
-	struct sigaction	sa;
-
-	sa.sa_handler = ft_bit_handler;
-	sigemptyset(&sa.sa_mask);
-	sa.sa_flags = 0;
-	ft_printf(COLOR_GREEN "\nServer Active\nPID is: %d:\n", getpid());
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
-	while (1)
+	set_handlers();
+	ft_putstr_fd("Server running: PID: ", 1);
+	ft_putnbr_fd(getpid(), 1);
+	ft_putstr_fd("\n", 1);
+	while (42)
 		pause();
 }

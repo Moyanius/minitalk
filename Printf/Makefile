@@ -6,7 +6,7 @@
 #    By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/25 19:37:54 by jmoyano-          #+#    #+#              #
-#    Updated: 2022/06/01 17:48:38 by jmoyano-         ###   ########.fr        #
+#    Updated: 2022/09/05 18:10:18 by jmoyano-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ OBJS		=	${SRCS:.c=.o}
 CFLAGS		= -Wall -Wextra -Werror
 
 $(NAME):
-	make -C ./Libft
-	cp Libft/libft.a $(NAME)
+	make -C ./Libftt
+	cp Libftt/libftt.a $(NAME)
 	gcc $(CFLAGS) -c $(SRCS) -I./
 	ar rcs $(NAME) $(OBJS)
 
@@ -32,11 +32,11 @@ $(NAME):
 all: $(NAME)
 
 clean:
-	make clean -C ./Libft
+	make clean -C ./Libftt
 	rm -f $(OBJS)
 
 fclean: clean
-	make fclean -C ./Libft
+	make fclean -C ./Libftt
 	rm -f $(NAME)
 
 re: fclean all

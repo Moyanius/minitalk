@@ -6,11 +6,11 @@
 /*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 20:17:02 by jmoyano-          #+#    #+#             */
-/*   Updated: 2022/06/08 19:51:02 by jmoyano-         ###   ########.fr       */
+/*   Updated: 2022/09/06 20:19:19 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+/*
 #include "ft_printf.h"
 
 int main (void)
@@ -44,4 +44,4 @@ int main (void)
 ,'j', "esto es un string", 42, 42, 58, 58, 10, p);
 
 
-}
+}*/

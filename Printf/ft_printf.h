@@ -6,7 +6,7 @@
 /*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 20:26:36 by jmoyano-          #+#    #+#             */
-/*   Updated: 2022/06/06 17:15:16 by jmoyano-         ###   ########.fr       */
+/*   Updated: 2022/09/05 18:19:44 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <strings.h>
-# include "./Libft/libft.h"
+# include "./Libftt/libft.h"
 
 int		ft_printf(char const *stri, ...);
 int		ft_x_lowerupper(unsigned int i, int *tc, int mayus);

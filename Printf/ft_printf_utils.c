@@ -6,7 +6,7 @@
 /*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 09:48:57 by jmoyano-          #+#    #+#             */
-/*   Updated: 2022/06/08 18:24:20 by jmoyano-         ###   ########.fr       */
+/*   Updated: 2022/09/06 19:33:19 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_putnbr_d_i(int n, int *tc)
 {
 	if (n == -2147483648)
 	{
-		ft_putstr_fd("-2147483648", 1, tc);
+		ft_putstr_fdd("-2147483648", 1, tc);
 		return ;
 	}
 	else if (n < 0)

@@ -6,47 +6,42 @@
 /*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 18:40:41 by jmoyano-          #+#    #+#             */
-/*   Updated: 2022/08/31 19:40:42 by jmoyano-         ###   ########.fr       */
+/*   Updated: 2022/09/06 20:18:50 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	ft_send_bit(int pid, char *str, int len)
-{
-	int		i;
-	int		pos;
+#define DELAY 5000
 
-	i = 0;
-	while (i <= len)
+static void	send_msg(int pid, char *str)
+{
+	int	pos;
+	int	len;
+	int	i;
+
+	len = ft_strlen(str);
+	i = -1;
+	while (++i <= len)
 	{
-		pos = 0;
-		while (pos < 7)
+		pos = -1;
+		while (++pos < 7)
 		{
 			if ((str[i] >> pos) & 1)
 				kill(pid, SIGUSR2);
 			else
 				kill(pid, SIGUSR1);
-			pos++;
-			usleep(500);
+			usleep(DELAY);
 		}
-		i++;
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
-	int		pid_server;
-	char	*str;
-
-	str = argv[2];
-	if (argc != 3)
+	if (ac != 3)
 	{
-		ft_printf(COLOR_RED "Wrong argument \n");
-		return (0);
+		ft_putstr_fd("Usage: client <PID> <string>\n", 1);
+		exit(EXIT_FAILURE);
 	}
-	pid_server = ft_atoi(argv[1]);
-	ft_printf(COLOR_RED "\nSendind msg with %d bytes \n", ft_strlen(str));
-	ft_send_bit(pid_server, argv[2], ft_strlen(str));
-	return (0);
+	send_msg(ft_atoi(av[1]), av[2]);
 }

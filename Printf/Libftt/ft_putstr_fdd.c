@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fdd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmoyano- <jmoyano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 13:15:35 by jmoyano-          #+#    #+#             */
-/*   Updated: 2022/04/25 17:34:43 by jmoyano-         ###   ########.fr       */
+/*   Created: 2022/05/06 15:11:35 by jmoyano-          #+#    #+#             */
+/*   Updated: 2022/09/06 19:31:21 by jmoyano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_putstr_fdd(char *s, int fd, int *tc)
 {
-	int	i;
-
-	i = 0;
-	while (*(str + i) != '\0')
-		i++;
-	return (i);
+	if (!s)
+	{
+		write (1, "(null)", 6);
+		*tc += 6;
+		return ;
+	}
+	write (fd, s, ft_strlen(s));
+	*tc += ft_strlen(s);
 }
-/*
-int main(void)
-{
-	int i;
-
-	i = ft_strlen( "This is string.h library function");
-	printf("%i", i);
-	return (0);
-}*/

@@ -13,10 +13,10 @@
 # Este es el Makefile correspondiente a la práctica LIBFT
 # José Moyano Jiménez
 
-NAME    =   libft.a
+NAME    =   libftt.a
 
 SRCS    = 	ft_putchar_fd.c \
-			ft_putstr_fd.c \
+			ft_putstr_fdd.c \
 			ft_strchr.c \
 			ft_strlen.c
 
